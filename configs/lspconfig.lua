@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "gopls" }
+local servers = { "html", "cssls", "tsserver", "clangd", "gopls", "zk" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -16,7 +16,7 @@ end
 lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = {"gopls"},
+  cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   -- root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
@@ -27,14 +27,14 @@ lspconfig.gopls.setup {
         unusedparams = true,
       },
     },
-  }
+  },
 }
 
 lspconfig.pyright.setup {
 
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { 'pyright', '--stdio' },
+  cmd = { "pyright", "--stdio" },
   filetypes = { "py", "python" },
   single_file_support = true,
   settings = {
@@ -42,11 +42,11 @@ lspconfig.pyright.setup {
       analysis = {
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
-        diagnosticMode = 'openFilesOnly',
+        diagnosticMode = "openFilesOnly",
       },
     },
   },
 }
 
--- 
+--
 -- lspconfig.pyright.setup { blabla}

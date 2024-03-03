@@ -32,7 +32,7 @@ M.mason = {
     "css-lsp",
     "html-lsp",
     "typescript-language-server",
-    "deno",
+    -- "deno",
     "prettier",
 
     "gopls",
@@ -41,6 +41,9 @@ M.mason = {
     -- c/cpp stuff
     "clangd",
     "clang-format",
+
+    -- markdown stuff
+    "markdownlint",
   },
 }
 
@@ -59,7 +62,6 @@ M.nvimtree = {
     },
   },
 }
-
 
 M.copilot = {
   -- Possible configurable fields can be found on:
