@@ -4,7 +4,7 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 
 -- if you just want default config for the servers then put them in a table
-local servers = { "html", "cssls", "tsserver", "clangd", "gopls", "zk" }
+local servers = { "html", "cssls", "tsserver", "clangd", "gopls" }
 
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
@@ -12,6 +12,17 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--offset-encoding=utf-16",
+    "--header-search-path=/home/ubuntu/repos/headers.txt",
+  },
+}
 
 lspconfig.gopls.setup {
   on_attach = on_attach,
